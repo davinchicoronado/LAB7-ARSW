@@ -144,7 +144,7 @@
 12. Una vez funcione la aplicación (sólo front-end), haga un módulo (llámelo 'apiclient') que tenga las mismas operaciones del 'apimock', pero que para las mismas use datos reales consultados del API REST. Para lo anterior revise [cómo hacer peticiones GET con jQuery](https://api.jquery.com/jquery.get/), y cómo se maneja el esquema de _callbacks_ en este contexto.
 
 13. Modifique el código de app.js de manera que sea posible cambiar entre el 'apimock' y el 'apiclient' con sólo una línea de código.
-		Para cambiar de apimock y apiclient se debe cambiar el parametro buleano.
+		Para cambiar de apimock y apiclient se debe cambiar el parametro booleano.
 						  	<p align="center">
 		<img src="https://github.com/davinchicoronado/LAB6-ARSW/blob/master/img/13.png?raw=true" alt="Sublime's custom image"/>
 		</p>
