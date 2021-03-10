@@ -93,23 +93,23 @@
 
     * Tome el listado de los planos, y le aplique una función 'map' que convierta sus elementos a objetos con sólo el nombre y el número de puntos.Implementaciòn Callback:
 		
-	  	<p align="center">
-		<img src="https://github.com/davinchicoronado/LAB6-ARSW/blob/master/img/logica5b.png?raw=true" alt="Sublime's custom image"/>
-		</p>
+<p align="center">
+<img src="https://github.com/davinchicoronado/LAB6-ARSW/blob/master/img/logica5b.png?raw=true" alt="Sublime's custom image"/>
+</p>
 	
 
 
     * Sobre el listado resultante, haga otro 'map', que tome cada uno de estos elementos, y a través de jQuery agregue un elemento \<tr\> (con los respectvos \<td\>) a la tabla creada en el punto 4. Tenga en cuenta los [selectores de jQuery](https://www.w3schools.com/JQuery/jquery_ref_selectors.asp) y [los tutoriales disponibles en línea](https://www.tutorialrepublic.com/codelab.php?topic=faq&file=jquery-append-and-remove-table-row-dynamically). Por ahora no agregue botones a las filas generadas. Implementaciòn Callback:
-	  	<p align="center">
-		<img src="https://github.com/davinchicoronado/LAB6-ARSW/blob/master/img/logica5c.png?raw=true" alt="Sublime's custom image"/>
-		</p>
+<p align="center">
+<img src="https://github.com/davinchicoronado/LAB6-ARSW/blob/master/img/logica5c.png?raw=true" alt="Sublime's custom image"/>
+</p>
 
 
     * Sobre cualquiera de los dos listados (el original, o el transformado mediante 'map'), aplique un 'reduce' que calcule el número de puntos. Con este valor, use jQuery para actualizar el campo correspondiente dentro del DOM. Implementaciòn Callback:
 			  	
-				<p align="center">
-		<img src="https://github.com/davinchicoronado/LAB6-ARSW/blob/master/img/logica5d.png?raw=true" alt="Sublime's custom image"/>
-		</p>
+<p align="center">
+<img src="https://github.com/davinchicoronado/LAB6-ARSW/blob/master/img/logica5d.png?raw=true" alt="Sublime's custom image"/>
+</p>
 
 5. Asocie la operación antes creada (la de app.js) al evento 'on-click' del botón de consulta de la página.
 
@@ -126,7 +126,7 @@
 9. Al módulo app.js agregue una operación que, dado el nombre de un autor, y el nombre de uno de sus planos dados como parámetros, haciendo uso del método getBlueprintsByNameAndAuthor de apimock.js y de una función _callback_:
 				  	<p align="center">
 		<img src="https://github.com/davinchicoronado/LAB6-ARSW/blob/master/img/logica9.png?raw=true" alt="Sublime's custom image"/>
-		</p>
+		</p><br>
 	Implementaciòn metodo privado paintbluePrint: 
 						  	<p align="center">
 		<img src="https://github.com/davinchicoronado/LAB6-ARSW/blob/master/img/logica9b.png?raw=true" alt="Sublime's custom image"/>
