@@ -42,6 +42,7 @@ public class BlueprintAPIController {
 
     @RequestMapping(path ="/{author}",method = RequestMethod.GET)
     public ResponseEntity<?> GetBlueprintsByAuthor(@PathVariable ("author") String authorName){
+        System.out.println(authorName);
         try {
             return new ResponseEntity<>(bps.getBlueprintsByAuthor(authorName),HttpStatus.ACCEPTED);
         } catch (BlueprintNotFoundException ex) {

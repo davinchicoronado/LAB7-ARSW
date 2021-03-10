@@ -5,3 +5,15 @@
  */
 
 
+
+function myFunction(author) {
+
+    console.log(author);
+
+    const Url = 'localhost:8080/blueprints/' + author;
+    fetch(Url)
+    .then(data=>{return data.json()})
+    .then(res=>{console.log(res)});
+    
+    
+}
