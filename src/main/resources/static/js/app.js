@@ -4,87 +4,117 @@
  * and open the template in the editor.
  */
 
-const app = (function(){
-    let author;
-    let bluePrint;
+
+
+var app = (function(){
     
-    function getName(){
-        $("#nameAuthor").text(author+"'s "+"bluprints:");
-    }
-    function getBluePrint(){
-        $("nameBluePrint").text("Current blueprint: " + blueprint);
-    }
+    var author;
+    var appdata;
+    var nameBlueprint;
+    var c;
+    var ctx;
+    var Url;
+    var flag;
     
-    function getAuthorBlueprints(){
-        author = $("#author").val();
-        if(author === ""){
-            alert("You must insert a name !");
-        }else{
-            apimock.getBlueprintsByAuthor(author, (req, resp)=>{
-                
-            });
-        }
-    }
-    
-    function añadirData(data){
-        $("#blueprintsTable tbody").empty();
+    var getBlueprints= function(authorName, value){ 
+        author = authorName;
+        appdata = [];
+        flag = value;
         
-        if(data === undefined){
-            alert("Author or blueprint doesn't exist");
-            $("#nameAuthor").empty();
-            $("#userPoints").empty();
-        }else{
-            getName();
-            const datanew = data.map((elemento)=>{
-                return{
-                    name:elemento.name,
-                    puntos:elemento.points.length
-                }
-            });
-            datanew.map((elementos)=>{
-                $("#blueprintsTable > tablebody:last").append($("<tr><td>" +elementos.name + "</td><td>" + elementos.puntos.toString() + "</td><td>" + "<button id=" + elementos.name + " onclick=app.getBlueprintByAuthorAndName(this)>open</button>" + "</td>"));
-            });
-            
-            const puntosTotales = datanew.reduce((suma,{puntos})=> suma + puntos,0);
-            
-            $("#userPoints").text(puntostotales);
+        if(flag){
+            Url = "js/apiclient.js";
+        } 
+        else{
+            Url = "js/apimock.js";
         }
-    }
-    function getBlueprintByAuthorAndName(data) {
-        author = $("#author").val();
-        blueprintName = data.id;
-        apimock.getBlueprintsByNameAndAuthor(blueprintName, author, (req, resp) => {
-            pintaData(resp);
+        
+        
+        $.getScript(Url, function(){
+            apidata.getBlueprintsByAuthor(author,callback);
         });
-    }
+        
+    };
+         
+    var  paintbluePrint = function(){
+        
+        $("#Blueprints").on("click",".btnSelect", function(){
+            
+           var currentRow=$(this).closest("tr");    
+           nameBlueprint = currentRow.find("td:eq(0)").text().trim();
+           
+           $.getScript(Url,function(){
+              apidata.getBlueprintsByNameAndAuthor(nameBlueprint,author,callback2);           
+           });
+        });
+        
+    };
+    
+    
+    var callback = function(resp){
+        
 
-    function pintarData(data) {
-        getBluePrintName();
-        const puntos = data.points;
-        var c = document.getElementById("Canvas");
-        var c2d= c.getContext("2d");
-        c2d.clearRect(0, 0, c.width, c.height);
-        c2d.restore();
-        c2d.beginPath();
-        for (let i = 1; i < puntos.length; i++) {
-            c2d.moveTo(puntos[i - 1].x, puntos[i - 1].y);
-            c2d.lineTo(puntos[i].x, puntos[i].y);
-            if (i === puntos.length - 1) {
-                c2d.moveTo(puntos[i].x, puntos[i].y);
-                c2d.lineTo(puntos[0].x, puntos[0].y);
-            }
+        $("#nameAuthor").html(`${author}`+"'s blueprints");
+        c = document.getElementById("myCanvas");
+        ctx = c.getContext("2d"); 
+        c.width=c.width;
+        
+        for(let blueprint of resp){
+            appdata.push({name:blueprint.name,numOfPoints:blueprint.points.reduce(function(cont){return cont+1;},0)});
         }
-        c2d.stroke();
-    }
+        
+        $("#tbody").empty();
+        $("#nameBlueprint").empty();
+        
+        for(let blueprint of appdata){
+               $("#tbody").append(
+                      `
+                      <tr>
+                       <td>${blueprint.name} </td>
+                       <td>${blueprint.numOfPoints}</td>
+                      <td onClick="app.paintbluePrint()"><button class="btnSelect">Open</button></td>
+                      </tr>
+                      `
+                      );
+        }
+        
+        var totalPoints = appdata.reduce(function(cont,index){return cont+index.numOfPoints;},0);
+        
+        $("#totalPoints").html("Total user points: "+`${totalPoints}`);
+        
+    
+    };
+    
+    var callback2 = function(resp){
+        
+        
+        $("#nameBlueprint").html("Current blueprint: "+`${nameBlueprint}`);
+        
+        c.width=c.width;
 
-
-    return {
-
-        getAuthorBlueprints: getAuthorBlueprints,
-        getBlueprintByAuthorAndName: getBlueprintByAuthorAndName
-
-    }
-
-})();
-
-
+        var flag = true;
+        for(let punto of resp.points){
+            if (flag){
+                ctx.moveTo(punto.x,punto.y);
+                flag = false;
+            }
+            else{
+                ctx.lineTo(punto.x,punto.y);
+            }
+            ctx.stroke();
+        }
+        
+        
+        
+    };
+    
+    return{
+        getbluePrints: function(author){           
+            getBlueprints(author,false); 
+            event.preventDefault();
+        },
+        paintbluePrint: function(){
+            paintbluePrint();
+            event.preventDefault();
+        }
+    };
+})(); 

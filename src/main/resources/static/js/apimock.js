@@ -1,4 +1,4 @@
-var apimock = (function () {
+var apidata = (function () {
 
     var mockdata = [];
 
@@ -34,9 +34,31 @@ var apimock = (function () {
                     y: 45
                 }
             ]
+        },
+        {
+            author:"JhonConnor",
+            name:"Centro comercial",
+            points: [
+                {
+                    x:15,
+                    y:22
+                },
+                {
+                    x:55,
+                    y:15
+                    
+                },
+                {
+                    x:19,
+                    y:36
+                }
+                
+            ]
+            
+            
         }
     ]
-
+    ;
     mockdata['LexLuthor'] = [
         {
             author: 'LexLuthor',
@@ -51,90 +73,40 @@ var apimock = (function () {
                     y: 75
                 }
             ]
-        }
-    ]
-    
-    mockdata['AndresDavila'] = [
+        },
         {
-            author: 'AndresDavila',
-            name: 'perreo',
+            author:'LexLuthor',
+            name: 'La casa de los dibujos',
             points: [
                 {
-                    x: 40,
-                    y: 30
+                    x:15,
+                    y:34
                 },
                 {
-                    x: 55,
-                    y: 45
+                    x:33,
+                    y:55
+                    
                 },
                 {
-                    x: 90,
-                    y: 70
-                },
+                    x:44,
+                    y:60
+                }
             ]
         }
     ]
-    mockdata['DavidCoronado'] = [
-        {
-            author: 'DavidCoronado',
-            name: 'Corogay',
-            points: [
-                {
-                    x: 30,
-                    y: 90
-                },
-                {
-                    x: 80,
-                    y: 40
-                },
-                {
-                    x: 90,
-                    y: 50
-                },
-            ]
-        }
-    ]
-    mockdata['VladimirPutin'] = [
-        {
-            author: 'VladimirPutin',
-            name: 'rusia',
-            points: [
-                {
-                    x: 70,
-                    y: 96
-                },
-                {
-                    x: 25,
-                    y: 60
-                },
-                {
-                    x: 80,
-                    y: 56
-                },
-                {
-                    x: 20,
-                    y: 30
-                },
-                {
-                    x: 15,
-                    y: 85
-                },
-            ]
-        }
-    ]
-
-
+    ;
     return {
         getBlueprintsByAuthor: function(author, callback) {
-            callback(null, mockdata[author]);
+            callback(mockdata[author]);
         },
-
+        
         getBlueprintsByNameAndAuthor: function(name, author, callback) {
+            
             blueprint = mockdata[author].find(function(blueprint) {
-                return blueprint.name == name
+                return blueprint.name === name;
             });
-            callback(null, blueprint)
+            callback(blueprint);
         }
-    }
+    };
 
 })();
