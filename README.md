@@ -74,15 +74,41 @@
     * El listado de nombre y tamaño de los planos del autor seleccionado. Es decir, una lista objetos, donde cada objeto tendrá dos propiedades: nombre de plano, y número de puntos del plano.
 
     Junto con una operación pública que permita cambiar el nombre del autor actualmente seleccionado.
-
+	Implementaciòn:
+	<p align="center">
+    <img src="https://github.com/davinchicoronado/LAB6-ARSW/blob/master/img/logica4.png?raw=true" alt="Sublime's custom image"/>
+  </p>
+	
 
 4. Agregue al módulo 'app.js' una operación pública que permita actualizar el listado de los planos, a partir del nombre de su autor (dado como parámetro). Para hacer esto, dicha operación debe invocar la operación 'getBlueprintsByAuthor' del módulo 'apimock' provisto, enviándole como _callback_ una función que:
+	Implementaciòn:
+	<p align="center">
+    <img src="https://github.com/davinchicoronado/LAB6-ARSW/blob/master/img/logica5.png?raw=true" alt="Sublime's custom image"/>
+	Implementaciòn en Metodo getBlueprints.
+  </p>
+  	<p align="center">
+    <img src="https://github.com/davinchicoronado/LAB6-ARSW/blob/master/img/logica5a.png?raw=true" alt="Sublime's custom image"/>
+  </p>
+  
 
-    * Tome el listado de los planos, y le aplique una función 'map' que convierta sus elementos a objetos con sólo el nombre y el número de puntos.
+    * Tome el listado de los planos, y le aplique una función 'map' que convierta sus elementos a objetos con sólo el nombre y el número de puntos. <br> Implementaciòn Callback:
+		
+	  	<p align="center">
+		<img src="https://github.com/davinchicoronado/LAB6-ARSW/blob/master/img/logica5b.png?raw=true" alt="Sublime's custom image"/>
+		</p>
+	
 
-    * Sobre el listado resultante, haga otro 'map', que tome cada uno de estos elementos, y a través de jQuery agregue un elemento \<tr\> (con los respectvos \<td\>) a la tabla creada en el punto 4. Tenga en cuenta los [selectores de jQuery](https://www.w3schools.com/JQuery/jquery_ref_selectors.asp) y [los tutoriales disponibles en línea](https://www.tutorialrepublic.com/codelab.php?topic=faq&file=jquery-append-and-remove-table-row-dynamically). Por ahora no agregue botones a las filas generadas.
 
-    * Sobre cualquiera de los dos listados (el original, o el transformado mediante 'map'), aplique un 'reduce' que calcule el número de puntos. Con este valor, use jQuery para actualizar el campo correspondiente dentro del DOM.
+    * Sobre el listado resultante, haga otro 'map', que tome cada uno de estos elementos, y a través de jQuery agregue un elemento \<tr\> (con los respectvos \<td\>) a la tabla creada en el punto 4. Tenga en cuenta los [selectores de jQuery](https://www.w3schools.com/JQuery/jquery_ref_selectors.asp) y [los tutoriales disponibles en línea](https://www.tutorialrepublic.com/codelab.php?topic=faq&file=jquery-append-and-remove-table-row-dynamically). Por ahora no agregue botones a las filas generadas. <br> Implementaciòn Callback:
+	  	<p align="center">
+		<img src="https://github.com/davinchicoronado/LAB6-ARSW/blob/master/img/logica5c.png?raw=true" alt="Sublime's custom image"/>
+		</p>
+
+
+    * Sobre cualquiera de los dos listados (el original, o el transformado mediante 'map'), aplique un 'reduce' que calcule el número de puntos. Con este valor, use jQuery para actualizar el campo correspondiente dentro del DOM. <br> Implementaciòn Callback:
+			  	<p align="center">
+		<img src="https://github.com/davinchicoronado/LAB6-ARSW/blob/master/img/logica5d.png?raw=true" alt="Sublime's custom image"/>
+		</p>
 
 5. Asocie la operación antes creada (la de app.js) al evento 'on-click' del botón de consulta de la página.
 
@@ -90,10 +116,25 @@
 
 ## Para la próxima semana
 
-8. A la página, agregue un [elemento de tipo Canvas](https://www.w3schools.com/html/html5_canvas.asp), con su respectivo identificador. Haga que sus dimensiones no sean demasiado grandes para dejar espacio para los otros componentes, pero lo suficiente para poder 'dibujar' los planos.
+8. A la página, agregue un [elemento de tipo Canvas](https://www.w3schools.com/html/html5_canvas.asp), con su respectivo identificador. Haga que sus dimensiones no sean demasiado grandes para dejar espacio para los otros componentes, pero lo suficiente para poder 'dibujar' los planos. <br> Implementaciòn HTML:
+				  	<p align="center">
+		<img src="https://github.com/davinchicoronado/LAB6-ARSW/blob/master/img/8.png?raw=true" alt="Sublime's custom image"/>
+		</p>
+
 
 9. Al módulo app.js agregue una operación que, dado el nombre de un autor, y el nombre de uno de sus planos dados como parámetros, haciendo uso del método getBlueprintsByNameAndAuthor de apimock.js y de una función _callback_:
-    * Consulte los puntos del plano correspondiente, y con los mismos dibuje consectivamente segmentos de recta, haciendo uso [de los elementos HTML5 (Canvas, 2DContext, etc) disponibles](https://www.w3schools.com/html/tryit.asp?filename=tryhtml5_canvas_tut_path)* Actualice con jQuery el campo <div> donde se muestra el nombre del plano que se está dibujando (si dicho campo no existe, agruéguelo al DOM).
+				  	<p align="center">
+		<img src="https://github.com/davinchicoronado/LAB6-ARSW/blob/master/img/logica9.png?raw=true" alt="Sublime's custom image"/>
+		</p>
+	Implementaciòn metodo privado paintbluePrint: 
+						  	<p align="center">
+		<img src="https://github.com/davinchicoronado/LAB6-ARSW/blob/master/img/logica9b.png?raw=true" alt="Sublime's custom image"/>
+		</p>
+		
+    * Consulte los puntos del plano correspondiente, y con los mismos dibuje consectivamente segmentos de recta, haciendo uso [de los elementos HTML5 (Canvas, 2DContext, etc) disponibles](https://www.w3schools.com/html/tryit.asp?filename=tryhtml5_canvas_tut_path)* Actualice con jQuery el campo <div> donde se muestra el nombre del plano que se está dibujando (si dicho campo no existe, agruéguelo al DOM). Implementaciòn callback2:
+						  	<p align="center">
+		<img src="https://github.com/davinchicoronado/LAB6-ARSW/blob/master/img/logica9c.png?raw=true" alt="Sublime's custom image"/>
+		</p>
 
 10. Verifique que la aplicación ahora, además de mostrar el listado de los planos de un autor, permita seleccionar uno de éstos y graficarlo. Para esto, haga que en las filas generadas para el punto 5 incluyan en la última columna un botón con su evento de clic asociado a la operación hecha anteriormente (enviándo como parámetro los nombres correspondientes).
 
@@ -102,5 +143,9 @@
 12. Una vez funcione la aplicación (sólo front-end), haga un módulo (llámelo 'apiclient') que tenga las mismas operaciones del 'apimock', pero que para las mismas use datos reales consultados del API REST. Para lo anterior revise [cómo hacer peticiones GET con jQuery](https://api.jquery.com/jquery.get/), y cómo se maneja el esquema de _callbacks_ en este contexto.
 
 13. Modifique el código de app.js de manera que sea posible cambiar entre el 'apimock' y el 'apiclient' con sólo una línea de código.
+		Para cambiar de apimock y apiclient se debe cambiar el parametro buleano.
+						  	<p align="center">
+		<img src="https://github.com/davinchicoronado/LAB6-ARSW/blob/master/img/13.png?raw=true" alt="Sublime's custom image"/>
+		</p>
 
 14. Revise la [documentación y ejemplos de los estilos de Bootstrap](https://v4-alpha.getbootstrap.com/examples/) (ya incluidos en el ejercicio), agregue los elementos necesarios a la página para que sea más vistosa, y más cercana al mock dado al inicio del enunciado.
