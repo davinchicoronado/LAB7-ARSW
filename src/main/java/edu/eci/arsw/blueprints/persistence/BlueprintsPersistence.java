@@ -55,4 +55,13 @@ public interface BlueprintsPersistence {
      */
     public Set<Blueprint> getAllBluePrint() throws BlueprintNotFoundException;
     
+         /**
+     * Metodo encargado de eliminar un plano
+     * @param author Blueprint
+     * @param name Blueprint
+     * @throws BlueprintNotFoundException if there is no such blueprint
+     */
+    
+    public void deleteBlueprint(String author, String name) throws BlueprintNotFoundException;
+        
 }

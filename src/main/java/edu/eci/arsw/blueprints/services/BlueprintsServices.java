@@ -37,7 +37,7 @@ public class BlueprintsServices {
         bpp.saveBlueprint(bp);
     }
     
-        /**
+      /**
      * Metodo encargado de modificar o adicionar un nuevo BluePrint
      * @param bp
      * @param author
@@ -77,4 +77,8 @@ public class BlueprintsServices {
         return bpp.getBlueprintByAuthor(author);
     }
 
+    public void deleteBlueprint(String author, String name) throws BlueprintNotFoundException{
+        
+        bpp.deleteBlueprint(author,name);
+    }
 }

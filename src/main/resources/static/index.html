@@ -1,7 +1,13 @@
 
 <!DOCTYPE html>
 
-<head>
+<head> 
+    <style>
+          /* Disable intrinsic user agent touch behaviors (such as panning or zooming) */
+          canvas {
+            touch-action: none;
+          }
+    </style>
     <title>Blueprints</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -35,7 +41,7 @@
                 <div class="col">
                     <p id=nameAuthor></p>
 
-                    <table class="table"  id="Blueprints">
+                    <table class="table"  id="TableBlueprints">
                       <tr>
                             <th>Blueprint name</th>
                             <th>Number of points</th>
@@ -47,12 +53,25 @@
                       </tbody>
 
                     </table>
-                    <p id=totalPoints></p>
+                    <h5 id=totalPoints></h5>
                 </div>
                 <div class="col">
+                    <div class="input-group mb-3">
+                        <button class="btn btn-danger" onClick="app.newbluePrint();">New Blueprint</button> 
+                        <input class="form-control" type="text" style="display: none" id="nameBlueprintInput" size="40" placeholder="Name Blueprint"  >
+                    </div>
                     <p id=nameBlueprint></p>
-                    <canvas id="myCanvas" width="600" height="200" style="border:1px solid #000000;">
-                    </canvas>
+                    <canvas id="myCanvas" width="600" height="400" style="border:1px solid #000000;">
+                    </canvas> 
+                        <div class="row">
+                            <div class="col text-center">
+                                <button class="btn btn-success" onClick="app.saveupdatebluePrint(nameBlueprintInput.value)">Save/Update</button>
+                            </div>
+                            <div class="col text-center">
+                                <button class="btn btn-danger" onClick="app.deletebluePrint()">Delete</button>
+                            </div>
+                        </div>
+                    
                  </div>
             </div>
         </div>

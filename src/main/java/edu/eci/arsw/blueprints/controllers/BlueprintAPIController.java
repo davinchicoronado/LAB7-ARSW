@@ -27,9 +27,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping(value = "/blueprints")
 public class BlueprintAPIController {
+    
     @Autowired
     BlueprintsServices bps= null;
-    
+
     @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity<?> GetAllBlueprintFilter(){
         try {
@@ -42,7 +43,6 @@ public class BlueprintAPIController {
 
     @RequestMapping(path ="/{author}",method = RequestMethod.GET)
     public ResponseEntity<?> GetBlueprintsByAuthor(@PathVariable ("author") String authorName){
-        System.out.println(authorName);
         try {
             return new ResponseEntity<>(bps.getBlueprintsByAuthor(authorName),HttpStatus.ACCEPTED);
         } catch (BlueprintNotFoundException ex) {
@@ -84,6 +84,20 @@ public class BlueprintAPIController {
             Logger.getLogger(BlueprintAPIController.class.getName()).log(Level.SEVERE, null, ex);
             return new ResponseEntity<>(ex.getMessage(),HttpStatus.FORBIDDEN);
         }
-    }
+    } 
+    
+    @RequestMapping(path = "/{author}/{name}",method = RequestMethod.DELETE)
+     public ResponseEntity<?> DeleteBlueprint(@PathVariable ("author") String author, @PathVariable ("name") String name){
+        
+        try {
+    
+            bps.deleteBlueprint(author, name);
+            return new ResponseEntity<>(HttpStatus.ACCEPTED);
+        } catch (BlueprintNotFoundException ex) {
+            Logger.getLogger(BlueprintAPIController.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>(ex.getMessage(),HttpStatus.FORBIDDEN);
+        }
+    } 
+    
 }
 
