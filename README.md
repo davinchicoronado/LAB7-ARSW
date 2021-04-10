@@ -83,7 +83,7 @@
 4. Agregue al módulo 'app.js' una operación pública que permita actualizar el listado de los planos, a partir del nombre de su autor (dado como parámetro). Para hacer esto, dicha operación debe invocar la operación 'getBlueprintsByAuthor' del módulo 'apimock' provisto, enviándole como _callback_ una función que:
 	Implementaciòn:
 	<p align="center">
-    <img src="https://github.com/davinchicoronado/LAB6-ARSW/blob/master/img/logica5.png?raw=true" alt="Sublime's custom image"/>
+    <img src="https://github.com/davinchicoronado/LAB6-ARSW/blob/master/img/logica5.png?raw=true" alt="Sublime's custom image"/><br>
 	Implementaciòn en Metodo getBlueprints.
   </p>
   	<p align="center">
